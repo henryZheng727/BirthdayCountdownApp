@@ -23,7 +23,7 @@ class Picker extends Component {
         });
     }
     
-    render () {
+    render() {
         return (
             <div className="picker">
                 <DatePicker
