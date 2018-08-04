@@ -30,6 +30,7 @@ export default class App extends Component {
 
   handleChange = function (date) {
     console.log("APP JS  CHANGE", date._d);
+    clearInterval(this.timer);
     this.setState({
       startDate: date
     });
@@ -41,13 +42,21 @@ export default class App extends Component {
 
     var countDownDate = this.state.startDate.toDate().getTime();
 
+    
+
     //Update the count down every 1 second
     this.timer = setInterval(function () {
       // Get todays date and time
       var now = new Date().getTime();
+      console.log(countDownDate);
+      console.log(now);
+
 
       // Find the distance between now an the count down date
       var distance = countDownDate - now;
+
+      console.log(distance);
+
 
       // Time calculations for days, hours, minutes and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -66,6 +75,8 @@ export default class App extends Component {
         seconds
       }
       this.setState({ timeRemaining });
+
+      //console.log(days);
 
       //If the count down is over, write some text
       if (distance < 0) {
