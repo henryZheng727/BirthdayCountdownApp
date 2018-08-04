@@ -7,9 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 class Picker extends Component {
 
-    handleChange = function (date) {
+    handleChange = function(date) {
         this.props.callback(date)
-    }.bind(this)
+    }.bind(this);
 
     render() {
         return (

@@ -31,14 +31,14 @@ export default class App extends Component {
 
   handleChange = function (date) {
     console.log("APP JS  CHANGE", date._d);
-    clearInterval(this.timer);
+
     this.setState({
       startDate: date
     });
   }.bind(this);
 
   handleGenerate = function () {
-
+    clearInterval(this.timer)
 
     var bday = this.state.startDate.toDate();
     var today = new Date();
