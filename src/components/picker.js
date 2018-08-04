@@ -6,18 +6,18 @@ import moment from "moment";
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Picker extends Component {
-
-
+   
     constructor (props) {
         super(props)
         this.state = {
             startDate: moment()
         };
-        this.handleChange = this.handleChange.bind(this);
+       this.handleChange = this.handleChange.bind(this);
+    //    console.log("Hello world!");
     }
 
     handleChange(date) {
-        console.log('trying to change date for', date._d)
+       console.log('trying to change date for', date._d)
         this.setState({
             startDate: date
         });
