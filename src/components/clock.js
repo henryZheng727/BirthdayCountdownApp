@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class Clock extends Component {
-   
+
     render() {
         const time = this.props.timeRemaining;
         return (

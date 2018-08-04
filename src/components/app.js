@@ -22,8 +22,9 @@ export default class App extends Component {
         hours: 0,
         minutes: 0,
         seconds: 0
-      }
-    }
+      },
+      age: 0
+    };
 
     this.handleGenerate = this.handleGenerate.bind(this)
   }
@@ -37,7 +38,6 @@ export default class App extends Component {
   }.bind(this);
 
   handleGenerate = function () {
-    this.setState({ active: true })
 
 
     var bday = this.state.startDate.toDate();
@@ -45,15 +45,23 @@ export default class App extends Component {
     var currentMonth = today.getMonth();
     var birthMonth = bday.getMonth();
 
-    if(birthMonth > currentMonth) {
+
+    var timeBetween = today.getTime() - bday.getTime();
+    var daysOld = Math.floor(timeBetween / (1000 * 60 * 60 * 24))
+    var age = Number((daysOld/365).toFixed(0));
+    this.setState({ 
+      active: true
+    })
+
+    if (birthMonth > currentMonth) {
       bday.setFullYear(today.getFullYear())
-    } else if(birthMonth < currentMonth) {
+    } else if (birthMonth < currentMonth) {
       bday.setFullYear(today.getFullYear() + 1)
-    } else if(birthMonth = currentMonth) {
-      var currentDay = today.getDay();
+    } else if (birthMonth = currentMonth) {
+      var currentDay = today.getDate();
       var birthDay = bday.getDate();
 
-      if(birthDay > currentDay) {
+      if (birthDay > currentDay) {
         bday.setFullYear(today.getFullYear())
       }
       if (birthDay <= currentDay) {
@@ -98,7 +106,7 @@ export default class App extends Component {
         ChangeDate('Change Date', () => this.setState({ active: false })),
         LargeText('04/03'),
         <label className="grid__remaining">
-          Remaining until your 21st birthday
+          Remaining until you turn {this.state.age}
         </label>
       ]
     } else {
